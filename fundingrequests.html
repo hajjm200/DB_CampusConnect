@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head><title>Funding Requests</title></head>
+<body>
+
+<h2>Funding Requests</h2>
+
+<!-- INSERT FORM -->
+<h3>Add Funding Request</h3>
+<form id="addFundingForm">
+
+  Amount: 
+  <input name="amountRequested" type="number" step="0.01" required><br>
+
+  Status: 
+  <input name="status" required><br>
+
+  Submitted Date: 
+  <input name="submittedDate" type="date" required><br>
+
+  Event:
+  <select name="eventID" id="eventDropdown" required></select><br>
+
+  <button type="submit">Add Request</button>
+</form>
+
+<br><hr>
+
+<!-- TABLE -->
+<table border="1" id="fundingTable">
+  <tr>
+    <th>ID</th><th>Amount</th><th>Status</th><th>Date</th><th>Event</th><th>Edit</th><th>Delete</th>
+  </tr>
+</table>
+
+
+<script>
+// LOAD EVENTS DROPDOWN
+function loadEventDropdown(selectID, selected=null) {
+  fetch('/api/events')
+    .then(r => r.json())
+    .then(events => {
+      const dd = document.getElementById(selectID);
+      dd.innerHTML = "";
+
+      events.forEach(e => {
+        dd.innerHTML += `<option value="${e.eventID}" ${selected == e.eventID ? 'selected':''}>${e.eventName}</option>`;
+      });
+    });
+}
+
+// LOAD FUNDING TABLE
+function loadFunding() {
+  fetch('/api/funding')
+    .then(r => r.json())
+    .then(rows => {
+      const table = document.getElementById("fundingTable");
+      table.innerHTML = `
+        <tr>
+          <th>ID</th><th>Amount</th><th>Status</th><th>Date</th><th>Event</th><th>Edit</th><th>Delete</th>
+        </tr>`;
+
+      rows.forEach(f => {
+        table.innerHTML += `
+          <tr id="row-${f.requestID}">
+            <td>${f.requestID}</td>
+            <td>${f.amountRequested}</td>
+            <td>${f.status}</td>
+            <td>${f.submittedDate}</td>
+            <td>${f.eventID}</td>
+
+            <td><button onclick="editFunding(${f.requestID}, '${f.amountRequested}', '${f.status}', '${f.submittedDate}', ${f.eventID})">Edit</button></td>
+            <td><button onclick="deleteFunding(${f.requestID})">Delete</button></td>
+          </tr>
+
+          <!-- EDIT ROW -->
+          <tr id="edit-${f.requestID}" style="display:none;">
+            <td colspan="7">
+              <h4>Edit Request</h4>
+
+              Amount: <input id="editAmount-${f.requestID}" type="number" step="0.01" value="${f.amountRequested}"><br>
+              Status: <input id="editStatus-${f.requestID}" value="${f.status}"><br>
+              Date: <input id="editDate-${f.requestID}" type="date" value="${f.submittedDate}"><br>
+
+              Event:
+              <select id="editEvent-${f.requestID}"></select><br>
+
+              <button onclick="saveFunding(${f.requestID})">Save</button>
+              <button onclick="cancelEdit(${f.requestID})">Cancel</button>
+            </td>
+          </tr>`;
+
+        setTimeout(() => loadEventDropdown(`editEvent-${f.requestID}`, f.eventID), 10);
+      });
+    });
+}
+
+// SHOW EDIT FORM
+function editFunding(id) {
+  document.getElementById(`edit-${id}`).style.display = '';
+}
+
+// CANCEL EDIT
+function cancelEdit(id) {
+  document.getElementById(`edit-${id}`).style.display = 'none';
+}
+
+// SAVE CHANGES (PUT)
+function saveFunding(id) {
+  const data = {
+    amountRequested: document.getElementById(`editAmount-${id}`).value,
+    status: document.getElementById(`editStatus-${id}`).value,
+    submittedDate: document.getElementById(`editDate-${id}`).value,
+    eventID: document.getElementById(`editEvent-${id}`).value
+  };
+
+  fetch(`/api/funding/${id}`, {
+    method: "PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => loadFunding());
+}
+
+// DELETE
+function deleteFunding(id) {
+  fetch(`/api/funding/${id}`, { method: "DELETE" })
+    .then(() => loadFunding());
+}
+
+// INSERT
+document.getElementById("addFundingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const data = {
+    amountRequested: this.amountRequested.value,
+    status: this.status.value,
+    submittedDate: this.submittedDate.value,
+

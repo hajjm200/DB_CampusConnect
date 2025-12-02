@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head><title>Students</title></head>
+<body>
+
+<h2>Students</h2>
+
+<!-- INSERT FORM -->
+<h3>Add New Student</h3>
+<form id="addStudentForm">
+  First Name: <input name="firstName" required><br>
+  Last Name: <input name="lastName" required><br>
+  Email: <input name="email" required><br>
+  <button type="submit">Add Student</button>
+</form>
+
+<br><hr>
+
+<!-- TABLE -->
+<table border="1" id="studentsTable">
+  <tr>
+    <th>ID</th><th>First</th><th>Last</th><th>Email</th><th>Edit</th><th>Delete</th>
+  </tr>
+</table>
+
+<script>
+// LOAD TABLE
+function loadStudents() {
+  fetch('/api/students')
+    .then(r => r.json())
+    .then(rows => {
+      const table = document.getElementById("studentsTable");
+      table.innerHTML = `
+        <tr>
+          <th>ID</th><th>First</th><th>Last</th><th>Email</th><th>Edit</th><th>Delete</th>
+        </tr>`;
+
+      rows.forEach(s => {
+        table.innerHTML += `
+          <tr id="row-${s.studentID}">
+            <td>${s.studentID}</td>
+            <td>${s.firstName}</td>
+            <td>${s.lastName}</td>
+            <td>${s.email}</td>
+            <td><button onclick="editStudent(${s.studentID}, '${s.firstName}', '${s.lastName}', '${s.email}')">Edit</button></td>
+            <td><button onclick="deleteStudent(${s.studentID})">Delete</button></td>
+          </tr>
+
+          <!-- EDIT ROW -->
+          <tr id="edit-${s.studentID}" style="display:none;">
+            <td colspan="6">
+              <h4>Edit Student</h4>
+              First Name: <input id="editFirst-${s.studentID}" value="${s.firstName}"><br>
+              Last Name: <input id="editLast-${s.studentID}" value="${s.lastName}"><br>
+              Email: <input id="editEmail-${s.studentID}" value="${s.email}"><br>
+              <button onclick="saveStudent(${s.studentID})">Save</button>
+              <button onclick="cancelEdit(${s.studentID})">Cancel</button>
+            </td>
+          </tr>`;
+      });
+    });
+}
+
+// SHOW EDIT FORM
+function editStudent(id) {
+  document.getElementById(`edit-${id}`).style.display = '';
+}
+
+// CANCEL EDIT
+function cancelEdit(id) {
+  document.getElementById(`edit-${id}`).style.display = 'none';
+}
+
+// SAVE CHANGES (PUT)
+function saveStudent(id) {
+  const data = {
+    firstName: document.getElementById(`editFirst-${id}`).value,
+    lastName: document.getElementById(`editLast-${id}`).value,
+    email: document.getElementById(`editEmail-${id}`).value
+  };
+
+  fetch(`/api/students/${id}`, {
+    method: "PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => loadStudents());
+}
+
+// DELETE
+function deleteStudent(id) {
+  fetch(`/api/students/${id}`, { method: "DELETE" })
+    .then(() => loadStudents());
+}
+
+// INSERT
+document.getElementById("addStudentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const data = {
+    firstName: this.firstName.value,
+    lastName: this.lastName.value,
+    email: this.email.value
+  };
+
+  fetch("/api/students", {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => {
+    this.reset();
+    loadStudents();
+  });
+});
+
+// INITIAL LOAD
+loadStudents();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Connect</title>
+</head>
+<body>
+  <h1>Campus Connect</h1>
+
+  <a href="clubs.html">Clubs</a><br>
+  <a href="students.html">Students</a><br>
+  <a href="events.html">Events</a><br>
+  <a href="fundingrequests.html">Funding Requests</a><br>
+  <a href="attendance.html">Event Attendance</a><br><br>
+
+  <button onclick="resetDB()">RESET DATABASE</button>
+
+<script>
+function resetDB() {
+  fetch('/reset')
+    .then(r => r.text())
+    .then(msg => alert(msg));
+}
+</script>
+
+</body>
+</html>
+

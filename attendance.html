@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head><title>Event Attendance</title></head>
+<body>
+
+<h2>Event Attendance</h2>
+
+<!-- INSERT FORM -->
+<h3>Add Attendance Record</h3>
+<form id="addAttendanceForm">
+
+  Check-In Time:
+  <input name="checkInTime" type="datetime-local" required><br>
+
+  Student:
+  <select name="studentID" id="studentDropdown" required></select><br>
+
+  Event:
+  <select name="eventID" id="eventDropdown" required></select><br>
+
+  <button type="submit">Add Attendance</button>
+</form>
+
+<br><hr>
+
+<!-- TABLE -->
+<table border="1" id="attendanceTable">
+  <tr>
+    <th>ID</th><th>Check-In</th><th>Student</th><th>Event</th><th>Edit</th><th>Delete</th>
+  </tr>
+</table>
+
+
+<script>
+// LOAD STUDENTS DROPDOWN
+function loadStudentDropdown(selectID, selected=null) {
+  fetch('/api/students')
+    .then(r => r.json())
+    .then(rows => {
+      const dd = document.getElementById(selectID);
+      dd.innerHTML = "";
+
+      rows.forEach(s => {
+        dd.innerHTML += `<option value="${s.studentID}" ${selected == s.studentID ? 'selected':''}>${s.firstName} ${s.lastName}</option>`;
+      });
+    });
+}
+
+// LOAD EVENTS DROPDOWN
+function loadEventDropdown(selectID, selected=null) {
+  fetch('/api/events')
+    .then(r => r.json())
+    .then(rows => {
+      const dd = document.getElementById(selectID);
+      dd.innerHTML = "";
+
+      rows.forEach(e => {
+        dd.innerHTML += `<option value="${e.eventID}" ${selected == e.eventID ? 'selected':''}>${e.eventName}</option>`;
+      });
+    });
+}
+
+// LOAD ATTENDANCE TABLE
+function loadAttendance() {
+  fetch('/api/attendance')
+    .then(r => r.json())
+    .then(rows => {
+      const table = document.getElementById("attendanceTable");
+      table.innerHTML = `
+        <tr>
+          <th>ID</th><th>Check-In</th><th>Student</th><th>Event</th><th>Edit</th><th>Delete</th>
+        </tr>`;
+
+      rows.forEach(a => {
+        table.innerHTML += `
+          <tr id="row-${a.attendanceID}">
+            <td>${a.attendanceID}</td>
+            <td>${a.checkInTime}</td>
+            <td>${a.studentID}</td>
+            <td>${a.eventID}</td>
+
+            <td><button onclick="editAttendance(${a.attendanceID}, '${a.checkInTime}', ${a.studentID}, ${a.eventID})">Edit</button></td>
+            <td><button onclick="deleteAttendance(${a.attendanceID})">Delete</button></td>
+          </tr>
+
+          <!-- EDIT ROW -->
+          <tr id="edit-${a.attendanceID}" style="display:none;">
+            <td colspan="6">
+              <h4>Edit Attendance</h4>
+
+              Check-In Time: 
+              <input id="editTime-${a.attendanceID}" type="datetime-local" value="${formatDateTimeInput(a.checkInTime)}"><br>
+
+              Student:
+              <select id="editStudent-${a.attendanceID}"></select><br>
+
+              Event:
+              <select id="editEvent-${a.attendanceID}"></select><br>
+
+              <button onclick="saveAttendance(${a.attendanceID})">Save</button>
+              <button onclick="cancelEdit(${a.attendanceID})">Cancel</button>
+            </td>
+          </tr>`;
+
+        // Load both dropdowns after row is built
+        setTimeout(() => {
+          loadStudentDropdown(`editStudent-${a.attendanceID}`, a.studentID);
+          loadEventDropdown(`editEvent-${a.attendanceID}`, a.eventID);
+        }, 10);
+      });
+    });
+}
+
+// Convert MySQL datetime → HTML datetime-local
+function formatDateTimeInput(dt) {
+  return dt.replace(" ", "T").slice(0, 16);
+}
+
+// SHOW EDIT FORM
+function editAttendance(id) {
+  document.getElementById(`edit-${id}`).style.display = '';
+}
+
+// CANCEL EDIT
+function cancelEdit(id) {
+  document.getElementById(`edit-${id}`).style.display = 'none';
+}
+
+// SAVE CHANGES (PUT)
+function saveAttendance(id) {
+  const data = {
+    checkInTime: document.getElementById(`editTime-${id}`).value.replace("T", " "),
+    studentID: document.getElementById(`editStudent-${id}`).value,
+    eventID: document.getElementById(`editEvent-${id}`).value
+  };
+
+  fetch(`/api/attendance/${id}`, {
+    method: "PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => loadAttendance());
+}
+
+// DELETE
+function deleteAttendance(id) {
+  fetch(`/api/attendance/${id}`, { method: "DELETE" })
+    .then(() => loadAttendance());
+}
+
+// INSERT
+document.getElementById("addAttendanceForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const data = {
+    checkInTime: this.checkInTime.value.replace("T", " "),
+    studentID: this.studentID.value,
+    eventID: this.eventID.value
+  };
+
+  fetch("/api/attendance", {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => {
+    this.reset();
+    loadAttendance();
+  });
+});
+
+// INITIAL LOAD
+loadStudentDropdown("studentDropdown");
+loadEventDropdown("eventDropdown");
+loadAttendance();
+</script>
+
+</body>
+</html>
+

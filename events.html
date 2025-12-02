@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head><title>Events</title></head>
+<body>
+
+<h2>Events</h2>
+
+<!-- INSERT FORM -->
+<h3>Add New Event</h3>
+<form id="addEventForm">
+  Name: <input name="eventName" required><br>
+  Date: <input name="eventDate" type="date" required><br>
+  Location: <input name="location" required><br>
+
+  Club:
+  <select name="clubID" id="clubDropdown" required></select><br>
+
+  <button type="submit">Add Event</button>
+</form>
+
+<br><hr>
+
+<!-- TABLE -->
+<table border="1" id="eventsTable">
+  <tr>
+    <th>ID</th><th>Name</th><th>Date</th><th>Location</th><th>Club</th><th>Edit</th><th>Delete</th>
+  </tr>
+</table>
+
+
+<script>
+// LOAD CLUB DROPDOWN
+function loadClubDropdown(selectID, selectedValue=null) {
+  fetch('/api/clubs')
+    .then(r => r.json())
+    .then(clubs => {
+      const dropdown = document.getElementById(selectID);
+      dropdown.innerHTML = "";
+
+      clubs.forEach(c => {
+        dropdown.innerHTML += `<option value="${c.clubID}" ${selectedValue == c.clubID ? 'selected':''}>${c.clubName}</option>`;
+      });
+    });
+}
+
+// LOAD EVENTS TABLE
+function loadEvents() {
+  fetch('/api/events')
+    .then(r => r.json())
+    .then(events => {
+      const table = document.getElementById("eventsTable");
+      table.innerHTML = `
+        <tr>
+          <th>ID</th><th>Name</th><th>Date</th><th>Location</th><th>Club</th><th>Edit</th><th>Delete</th>
+        </tr>`;
+
+      events.forEach(ev => {
+        table.innerHTML += `
+          <tr id="row-${ev.eventID}">
+            <td>${ev.eventID}</td>
+            <td>${ev.eventName}</td>
+            <td>${ev.eventDate}</td>
+            <td>${ev.location}</td>
+            <td>${ev.clubID}</td>
+
+            <td><button onclick="editEvent(${ev.eventID}, '${ev.eventName}', '${ev.eventDate}', '${ev.location}', ${ev.clubID})">Edit</button></td>
+            <td><button onclick="deleteEvent(${ev.eventID})">Delete</button></td>
+          </tr>
+
+          <!-- EDIT ROW -->
+          <tr id="edit-${ev.eventID}" style="display:none;">
+            <td colspan="7">
+              <h4>Edit Event</h4>
+
+              Name: <input id="editName-${ev.eventID}" value="${ev.eventName}"><br>
+              Date: <input id="editDate-${ev.eventID}" type="date" value="${ev.eventDate}"><br>
+              Location: <input id="editLocation-${ev.eventID}" value="${ev.location}"><br>
+
+              Club:
+              <select id="editClub-${ev.eventID}"></select><br>
+
+              <button onclick="saveEvent(${ev.eventID})">Save</button>
+              <button onclick="cancelEdit(${ev.eventID})">Cancel</button>
+            </td>
+          </tr>`;
+        
+        // load club dropdown into update row
+        setTimeout(() => {
+          loadClubDropdown(`editClub-${ev.eventID}`, ev.clubID);
+        }, 10);
+      });
+    });
+}
+
+// SHOW EDIT FORM
+function editEvent(id) {
+  document.getElementById(`edit-${id}`).style.display = '';
+}
+
+// CANCEL EDIT
+function cancelEdit(id) {
+  document.getElementById(`edit-${id}`).style.display = 'none';
+}
+
+// SAVE CHANGES (PUT)
+function saveEvent(id) {
+  const data = {
+    eventName: document.getElementById(`editName-${id}`).value,
+    eventDate: document.getElementById(`editDate-${id}`).value,
+    location: document.getElementById(`editLocation-${id}`).value,
+    clubID: document.getElementById(`editClub-${id}`).value
+  };
+
+  fetch(`/api/events/${id}`, {
+    method: "PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => loadEvents());
+}
+
+// DELETE
+function deleteEvent(id) {
+  fetch(`/api/events/${id}`, { method: "DELETE" })
+    .then(() => loadEvents());
+}
+
+// INSERT
+document.getElementById("addEventForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const data = {
+    eventName: this.eventName.value,
+    eventDate: this.eventDate.value,
+    location: this.location.value,
+    clubID: this.clubID.value
+  };
+
+  fetch("/api/events", {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => {
+    this.reset();
+    loadEvents();
+  });
+});
+
+// INITIAL LOAD
+loadClubDropdown("clubDropdown");
+loadEvents();
+</script>
+
+</body>
+</html>
+

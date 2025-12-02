@@ -1,0 +1,200 @@
+nohup: ignoring input
+Campus Connect running at http://classwork.engr.oregonstate.edu:8302
+Error: Table 'cs340_hajjm.Clubs' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:37:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Students' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:42:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Events' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:47:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.FundingRequests' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:52:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.EventAttendance' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:57:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Clubs' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:37:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Events' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:47:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.FundingRequests' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:52:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.EventAttendance' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:57:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Clubs' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:37:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Students' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:42:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Events' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:47:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Clubs' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:37:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Clubs' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:37:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Students' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:42:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.Events' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:47:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.FundingRequests' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:52:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
+Error: Table 'cs340_hajjm.EventAttendance' doesn't exist
+    at PromisePool.query (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/mysql2/lib/promise/pool.js:36:22)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/app.js:57:27
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/route.js:117:3)
+    at handle (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/lib/layer.js:152:17)
+    at /nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:295:15
+    at processParams (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:582:12)
+    at next (/nfs/stak/users/hajjm/CS340/Project_Step3/node_modules/router/index.js:291:5)
